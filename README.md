@@ -1,13 +1,19 @@
 # Useful UNIX Commands
 
-## MVP
+## Most useful
 - `man <command_name>` -> Open manual for any command
 
 ## File permissions
 - `ls -al` -> list all files including dot files
-    - `-rwxr---` -> 10 lettered string file permissions
-        - `-` -> indicates permission is not granted
-        - `r/w/x` denotes `read/write/execute` permissions
+- `-rwxr---` -> 10 lettered string file permissions
+    - `-` -> indicates permission is not granted
+    - 1st letter can be `d, s, p, l`
+        - d - directory 
+        - s - Socket 
+        - l - symbolic link 
+        - f - pipes 
+        - c, b - device file (character or block)
+    - Next 9 letters can be `r/w/x` denotes `read/write/execute` permissions
 - `chmod +rwx <file/dir>` -> grants read, write and execute permissions to user and group
     - `chmod u+[r/w/x]` grant any one or all 3 of [w/x/r] -> write, execute, read to `user/owner` of file.
     - `chmpd g+[r/w/x]` -> group
