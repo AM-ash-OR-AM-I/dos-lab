@@ -50,3 +50,7 @@
 
 - Kernel interacts with hardware, shell is a command line interpreter that interacts with Kernel.
 - ![DIagram](https://miro.medium.com/v2/resize:fit:828/format:webp/1*LEp6Tu9LKTF0m0DXvgNMvg.png)
+
+## Bash scripting
+
+- [Scripts](./scripts/)
