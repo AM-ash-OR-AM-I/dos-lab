@@ -1,0 +1,1 @@
+cat a.txt b.txt c.txt > d.txt | sort -h result.txt
