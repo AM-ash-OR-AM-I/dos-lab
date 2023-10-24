@@ -1,1 +1,3 @@
-cat a.txt b.txt c.txt > d.txt | sort -h result.txt
+#! /bin/bash
+cat a.txt b.txt c.txt | sort -h > result.txt
+cat result.txt
