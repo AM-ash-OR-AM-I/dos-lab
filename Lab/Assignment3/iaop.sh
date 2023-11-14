@@ -1,6 +1,4 @@
+#! /bin/bash
 echo "Enter two numbers:"
 read num1 num2
-echo "Addition: $((num1+num2))"
-echo "Subtraction: $((num1-num2))"
-echo "Multiplication: $((num1*num2))"
-echo "Division: $((num1/num2))"
+echo -e "Addition: $((num1+num2))\nSubtraction: $((num1-num2))\nMultiplication: $((num1*num2))\nDivision: $((num1/num2))"
