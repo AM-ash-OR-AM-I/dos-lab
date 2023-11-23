@@ -10,12 +10,7 @@ int main()
         if (vfork() == 0)
         {
             i = i + 1;
-            // _exit(0);
-            // break;
         }
-        // else
-        //     wait(NULL);
     }
-    fprintf(stderr, "%d %d\n", i, j);
     return 0;
 }
