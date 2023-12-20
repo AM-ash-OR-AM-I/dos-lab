@@ -1,16 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
+#include <sys/wait.h>
 #include <unistd.h>
 
-static int process_count = 0;
-
 int main() {
-  for (int i = 0; i < 4; i++) {
+  int process_count = 0;
+  for (int i = 0; i < 3; i++) {
     fork();
     process_count++;
-    printf("Hello from [child] pid: %d, [parent] pid: %d\n", getpid(),
-           getppid());
+    wait(NULL);
+    printf("Hello from pid: %d, [parent] pid: %d, count: %d\n", getpid(),
+           getppid(), process_count);
   }
   return 0;
 }
