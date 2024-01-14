@@ -1,0 +1,141 @@
+Shell Programming
+
+1. Write a program to calculate overtime pay of 10 employees. Overtime is paid at the rate of Rs. 12.00 per hour for every hour worked above 40 hours. Assume that employees do not work for fractional part of an hour.
+
+#!/bin/bash
+echo "Enter the number of hours worked"
+read hours
+if [ $hours -gt 40 ]
+then
+echo "Overtime pay is Rs. $((hours-40)) * 12.00"
+else
+echo "No overtime pay"
+fi
+
+
+2. Write a shell script darg that will display all the command line arguments passed during its execution, in the following format:
+Argument 1: value Argument 2: value
+
+#!/bin/bash
+echo "Argument 1: $1"
+echo "Argument 2: $2"
+
+
+3. Write a shell script fsize that can take multiple file names as its argument and display their size in the following format:
+File name   Size in byte
+file1       24
+
+#!/bin/bash
+echo "File name   Size in byte"
+echo "$1       $(stat -c%s $1)"
+echo "$2       $(stat -c%s $2)"
+
+4. Write a shell script nvcat that will display a message to enter a filename and then display the content of the file in the following format:
+Filename: File1
+...................
+.....................
+
+Then it will display another message “Do you want to display another file 1/0”. According to the entered choice it will display a message to enter a filename and then display the content of the file otherwise exit. The process will continue till choice entered is 1. [Implement it using while loop and then using until loop]
+
+#!/bin/bash
+choice=1 
+while [ $choice -eq 1 ]
+do
+echo "Enter the filename"
+read filename
+echo "Filename: $filename"
+cat $filename
+echo "Do you want to display another file 1/0"
+read choice
+done
+
+
+5. Write a shell script which will received any number of filenames as arguments. The shell script should check whether every argument supplied is a file or a directory. If it is a directory it should be appropriately reported. If it is a filename then name of the files as well as the number of lines present in it should be reported.
+
+#!/bin/bash
+for i in $*
+do
+if [ -d $i ]
+then
+echo "$i is a directory"
+elif [ -f $i ]
+then
+echo "$i is a file"
+echo "Number of lines in $i is $(wc -l $i)"
+fi
+done
+
+
+6. Write a shell script dfile2 that will display the name of all directories and non-executable files present in the current working directory.
+
+#!/bin/bash
+for i in *
+do
+if [ -d $i ]
+then
+echo "$i is a directory"
+elif [ -f $i ] && [ ! -x $i ]
+then
+echo "$i is a file"
+fi
+done
+
+Output:
+$ chmod +x dfile2
+$ ./dfile2
+A5_examples_6.sh is a non-executable file
+allquestions.txt is a non-executable file
+q1.sh is a non-executable file
+q2.sh is a non-executable file
+q3.sh is a non-executable file
+
+7. Write a shell script which displays a list of all files present in the current working directory to which you have read, write and execute permission.
+
+#!/bin/bash
+for i in *
+do
+if [ -r $i ] && [ -w $i ] && [ -x $i ]
+then
+echo "$i has read, write and execute permission"
+fi
+done
+
+
+8. Write a shell script nvcp that will receive multiple file names as arguments. If even number of files are supplied then the first file should get copied to the second file, the third file should get copied to fourth file and so on. If odd numbers of files are supplied then no copying should take place and an error message should be displayed.
+
+#!/bin/bash
+if [ $# -eq 0 ]
+then
+echo "No arguments supplied"
+elif [ $(($#%2)) -eq 0 ]
+then
+for ((i=1;i<=$#;i+=2))
+do
+cp ${!i} ${!((i+1))}
+done
+else
+echo "Odd number of arguments supplied"
+fi
+
+
+9. Write a shell script which will receive any number of filenames as arguments. The shell script should check whether such files already exist. If they do, then it should be reported. If these file do not exist then check if a sub directory called mydir exists in the current directory. If it doesn’t exist then it should be created and in it the files supplied as arguments should get created. If mydir already exists then it should be reported along with the number of files that are currently present in mydir.
+
+#!/bin/bash
+if [ $# -eq 0 ]
+then
+echo "No arguments supplied"
+else
+for i in $*
+do
+if [ -e $i ]
+then
+echo "$i already exists"
+else
+if [ ! -d mydir ]
+then
+mkdir mydir
+fi
+touch mydir/$i
+fi
+done
+fi

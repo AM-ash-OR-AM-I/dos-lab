@@ -7,7 +7,7 @@ do
 done 
 
 # Range of elements
-for i in {1..5..2}
+for i in {1..5}
 do
   echo "ith element: $i"
 done
