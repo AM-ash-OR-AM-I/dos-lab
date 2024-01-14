@@ -19,4 +19,4 @@ int main() {
 
 // Output:
 // Child: 6
-// Parent: 6
+// Parent: 7

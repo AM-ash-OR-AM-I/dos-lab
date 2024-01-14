@@ -1,1 +1,11 @@
-Lab/Assignment1/
+.vscode/*
+*.o
+*.out
+*
+!/**/
+!*.c
+!*.h
+!*.md
+!*.ipynb
+!*.sh
+!.gitignore

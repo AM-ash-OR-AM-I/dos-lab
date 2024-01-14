@@ -12,4 +12,4 @@ int main() {
   printf("3");
 }
 
-// Output: 23
+// Output: 123
