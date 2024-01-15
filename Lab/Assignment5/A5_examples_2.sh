@@ -57,7 +57,7 @@ done
 #!/bin/bash
 # For loop with command substitution
 list=`cat 9.txt`
-# Alternatively, use list=$(cat list.txt)
+# Alternatively, use list=$(cat 9.txt)
 for i in $list
 do
         echo $i

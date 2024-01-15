@@ -1,10 +1,9 @@
 #! /bin/bash
-shopt -s extglob;
 
 echo "Enter input:"
 read mychars
 
-prefix="You have entered "
+prefix="You have entered: $mychars, which is"
 
 case $mychars in
   [a-z])
